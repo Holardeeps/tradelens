@@ -8,7 +8,6 @@ state, server-rendered detail pages, and resilient handling of upstream
 slowdowns.
 
 Live URL: https://trade-lens.holardeeps.workers.dev
-Repository URL: https://github.com/Holardeeps/frontend-assessment-praise-elijah
 
 ## What It Includes
 
@@ -54,8 +53,8 @@ Notes:
 
 - no API key is required
 - no separate backend service is required
-- the app uses DummyJSON directly for this assessment, so no extra API base URL
-  configuration is needed
+- the app uses DummyJSON directly as its catalog source, so no extra API base
+  URL configuration is needed
 
 ## Architecture Decisions
 
@@ -139,29 +138,6 @@ Current local Lighthouse accessibility score:
 - `/products`: `100`
 - tested detail page: `100`
 
-## Bonus Tasks Attempted
-
-### B-1 Cloudflare Workers caching
-
-- OpenNext Cloudflare adapter configured with R2 incremental cache and durable
-  revalidation queue
-- immutable static asset caching added through `public/_headers`
-- attempted a small worker-level cache-status mirror in
-  [worker.mjs](./worker.mjs) to surface listing cache behavior
-- deployed `/products` responses did not expose `x-cache-status` publicly, so
-  that verification part remains incomplete
-
-### B-2 React Streaming with Suspense
-
-- related products on the detail page stream separately behind Suspense, so the
-  primary product detail content renders first
-
-### B-3 Accessibility audit
-
-- accessibility fixes were applied across landmarks, labels, keyboard flow,
-  focus handling, live regions, contrast, and reduced motion
-- local Lighthouse accessibility score reached `100` on both tested pages
-
 ## Deployment Notes
 
 Target platform:
@@ -180,7 +156,7 @@ Required Cloudflare bindings:
 - `NEXT_CACHE_DO_QUEUE`
 - `IMAGES`
 
-There is no backend API or secret API key to deploy for this assessment.
+There is no backend API or secret API key to deploy.
 
 ## Trade-Offs and Known Limitations
 
@@ -208,15 +184,6 @@ store/
 tests/
 types/
 ```
-
-## If I Had Another 2 Hours
-
-- add a lightweight product comparison tray so users can pin up to three items
-  and compare price, rating, stock, and warranty side by side
-- add a “recently viewed” strip across the catalog and detail flow so product
-  discovery feels more continuous and less one-page-at-a-time
-- add a compact category intelligence panel that surfaces signals from the
-  current result set, like strongest-rated category or best-value category
 
 ## Notes
 

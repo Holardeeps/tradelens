@@ -72,7 +72,7 @@ export function ProductsOverview({
         </div>
       </dl>
 
-      <div className="mt-6 rounded-panel-md border border-line-soft bg-panel px-4 py-4">
+      <div className="mt-6 rounded-panel-md border border-line-soft bg-panel px-4 py-4 hidden">
         <p className="metric-kicker">View summary</p>
         <p className="mt-3 wrap-break-word text-sm leading-6 text-ink">
           {querySummary}
